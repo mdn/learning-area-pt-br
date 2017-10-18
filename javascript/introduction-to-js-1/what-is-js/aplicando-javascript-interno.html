@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Exemplo aplicando JavaScript</title>
+</head>
+<body>
+  <button>Clique em mim</button>
+
+  <script>
+    function criarParagrafo() {
+      var para = document.createElement('p');
+      para.textContent = 'Você clicou no botão!';
+      document.body.appendChild(para);
+    }
+
+    var botoes = document.querySelectorAll('button');
+
+    for(var i = 0; i < botoes.length ; i++) {
+      botoes[i].addEventListener('click', criarParagrafo);
+    }
+  </script>
+</body>
+</html>
