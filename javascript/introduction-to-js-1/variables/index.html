@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Console JavaScript</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background-color: #0C323D;
+        color: #809089;
+        font-family: monospace;
+      }
+
+      body {
+        max-width: 700px;
+      }
+
+      p {
+        margin: 0;
+        width: 1%;
+        padding: 0 1%;
+        font-size: 16px;
+        line-height: 1.5;
+        float: left;
+      }
+
+      .input p {
+        margin-right: 1%;
+      }
+
+      .output p {
+        width: 100%;
+      }
+
+      .input input {
+        width: 96%;
+        float: left;
+        border: none;
+        font-size: 16px;
+        line-height: 1.5;
+        font-family: monospace;
+        padding: 0;
+        background: #0C323D;
+        color: #809089;
+      }
+
+      div {
+        clear: both;
+      }
+
+    </style>
+  </head>
+  <body>
+<script>
+    var geval = eval;
+    function criarEntrada() {
+      var entradaDiv = document.createElement('div');
+      var entradaParagrafo = document.createElement('p');
+      var entradaFormulario = document.createElement('input');
+
+      entradaDiv.setAttribute('class','input');
+      entradaParagrafo.textContent = '>';
+      entradaDiv.appendChild(entradaParagrafo);
+      entradaDiv.appendChild(entradaFormulario);
+      document.body.appendChild(entradaDiv);
+
+      if(document.querySelectorAll('div').length > 1) {
+        entradaFormulario.focus();
+      }
+
+      entradaFormulario.addEventListener('change', executarCodigo);
+    }
+
+    function executarCodigo(e) {
+      try {
+        var resultado = geval(e.target.value);
+      } catch(e) {
+        var resultado = 'error — ' + e.message;
+      }
+
+      var saidaDiv = document.createElement('div');
+      var saidaParagrafo = document.createElement('p');
+
+      saidaDiv.setAttribute('class','output');
+      saidaParagrafo.textContent = 'resultado: ' + resultado;
+      saidaDiv.appendChild(saidaParagrafo);
+      document.body.appendChild(saidaDiv);
+
+      e.target.disabled = true;
+      e.target.parentNode.style.opacity = '0.5';
+
+      criarEntrada()
+    }
+
+    criarEntrada();
+
+  </script>
+  </body>
+</html>

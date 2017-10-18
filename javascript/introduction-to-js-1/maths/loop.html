@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exemplo básico de loop</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: monospace;
+      }
+
+      body {
+        width: 700px;
+        margin: 0 auto;
+      }
+
+      div {
+        width: 50%;
+        float: left;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div>
+      <p>Total dos pedidos antes dos impostos (R$):</p>
+
+      <ul class="antes">
+
+      </ul>
+      
+    </div>
+
+    <div>
+      <p>Total dos pedidos com impostos de 6% (R$):</p>
+
+      <ul class="depois">
+
+      </ul>
+
+    </div>
+
+    
+  </body>
+
+  <script>
+
+    var totais = [191.45, 890.56, 67.99, 12.34, 235.64];
+
+    var listaAntes = document.querySelector('.antes');
+    var listaDepois = document.querySelector('.depois');
+
+    for(var i = 0; i < totais.length; i++) {
+      var itemLista = document.createElement('li');
+      itemLista.textContent = totais[i];
+      listaAntes.appendChild(itemLista);
+    }
+
+    for(var j = 0; j < totais.length; j++) {
+      var itemLista = document.createElement('li');
+      itemLista.textContent = (totais[j] * 1.06).toFixed(2);
+      listaDepois.appendChild(itemLista);
+    }
+    
+  </script>
+</html>

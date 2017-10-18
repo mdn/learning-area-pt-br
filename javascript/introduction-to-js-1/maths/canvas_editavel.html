@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exemplo canvas editável</title>
+    <style>
+      textarea {
+        height: 150px;
+        background-color: #F4F7F8;
+        border: none;
+        border-left: 6px solid #558ABB;
+        color: #4D4E53;
+        width: 90%;
+        max-width: 700px;
+        padding: 10px 10px 0px;
+      }
+
+      .botoes-editaveis {
+        text-align: right;
+        width: 90%;
+        max-width: 700px;
+        padding: 5px 10px 5px 26px;
+      }
+
+      canvas {
+        border: 1px solid #4D4E53;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="250" class="canvas-editavel">
+    </canvas>
+
+    <p>O retângulo tem 50px de largura e 50px de altura.</p>
+
+    <textarea id="codigo" class="codigo-editavel" style="height: 150px;">
+var x = 50; var y = 50;
+
+// Edite APENAS as duas linhas abaixo
+x = 50;
+y = 50;
+
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, x, y);
+    </textarea>
+
+    <div class="botoes-editaveis">
+      <input id="resetar" type="button" value="Resetar" />
+    </div>
+  </body>
+
+  <script>
+    var canvas = document.getElementById('canvas');
+    var para = document.querySelector('p');
+    var ctx = canvas.getContext('2d');
+    var areatexto = document.getElementById('codigo');
+    var resetar = document.getElementById('resetar');
+    var editar = document.getElementById('editar');
+    var codigo = areatexto.value;
+
+    function desenharCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      eval(areatexto.value);
+      para.textContent = 'O retangulo tem ' + x + 'px de largura e ' + y + 'px de altura.';
+    }
+
+    resetar.addEventListener('click', function() {
+      areatexto.value = codigo; desenharCanvas();
+    });
+
+    areatexto.addEventListener('input', desenharCanvas);
+    window.addEventListener('load', desenharCanvas);
+  </script>
+</html>

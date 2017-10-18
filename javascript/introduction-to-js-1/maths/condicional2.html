@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Segundo exemplo de condicional</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: monospace;
+      }
+
+      body {
+        width: 700px;
+        margin: 0 auto;
+      }
+
+      p {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      div {
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      input {
+        width: 70%;
+      }
+
+      button {
+        width: 27%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p>Diga-me como está se sentindo hoje.</p>
+    <div><input type="text"> <button>Enviar</button></div>
+    <p class="output"></p>
+  </body>
+
+  <script>
+    var entradaTexto = document.querySelector('input');
+    var botao = document.querySelector('button');
+    var saidaTexto = document.querySelector('.output');
+    var html = document.querySelector('html');
+    
+    entradaTexto.focus();
+
+    botao.onclick = function() {
+      var final = entradaTexto.value.toLowerCase();
+      if(final === 'alegre') {
+        saidaTexto.textContent = 'Estou feliz por você estar se sentindo bem hoje!';
+        html.style.backgroundColor = 'yellow';
+      } else if(final === 'triste') {
+        saidaTexto.textContent = 'Que dó! Estou triste por você estar mal.';
+        html.style.backgroundColor = 'lightblue';
+      } else if(final === 'com raiva') {
+        saidaTexto.textContent = 'Ei, acalme-se. Deixe-me lhe ajudar.';
+        html.style.backgroundColor = 'red';
+      } else {
+        saidaTexto.textContent = 'Eu não sei o que isso significa...';
+        html.style.backgroundColor = 'beige';
+      }
+    }
+    
+  </script>
+</html>
