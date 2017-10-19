@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Primeiro exemplo de condicional</title>
+  </head>
+  <body>
+    <button>Ligar máquina</button>
+    <p>A máquina está parada.</p>
+  </body>
+
+  <script>
+    var botao = document.querySelector('button');
+    var texto = document.querySelector('p');
+
+    botao.addEventListener('click', atualizarBotao);
+
+    function atualizarBotao() {
+      if(botao.textContent === 'Ligar máquina') {
+        botao.textContent = 'Parar máquina';
+        texto.textContent = 'A máquina foi ligada!';
+      } else {
+        botao.textContent = 'Ligar máquina';
+        texto.textContent = 'A máquina está parada.';
+      }
+    }
+  </script>
+</html>
